@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn-yes{
+            background-color: rgb(91, 134, 190);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-no{
+            background-color: rgb(134, 94, 94);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute; /* 使按鈕可以自由移動 */
+        }
+        /* 每次mouseenter時按鈕隨機移動 */
+        .btn-no2{
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <button class="btn-yes">Yes</button>
+    <button class="btn-no">No</button>
+    <script>
+        const btnYes = document.querySelector('.btn-yes');
+        const btnNo = document.querySelector('.btn-no');
+
+        btnYes.addEventListener('click', () => {
+            alert('You say Yes!');
+        });
+
+        btnNo.addEventListener('mouseenter', () => {
+            // 每次mouseenter時都要隨機移動
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+            btnNo.style.left = `${x}px`;
+            btnNo.style.top = `${y}px`;
+
+            const currentWidth = btnYes.offsetWidth;
+            const currentHeight = btnYes.offsetHeight;
+            const maxWidth = window.innerWidth;
+            const maxHeight = window.innerHeight;
+
+            const newWidth = Math.min(currentWidth * 2, maxWidth);
+            const newHeight = Math.min(currentHeight * 2, maxHeight);
+
+            btnYes.style.width = `${newWidth}px`;
+            btnYes.style.height = `${newHeight}px`;
+            btnYes.style.fontSize = `${newWidth / 10}px`;
+        });
+    </script>
+</body>
+</html>
