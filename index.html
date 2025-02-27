@@ -43,7 +43,6 @@
         });
 
         btnNo.addEventListener('mouseenter', () => {
-            // 每次mouseenter時都要隨機移動
             const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
             const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
             btnNo.style.left = `${x}px`;
